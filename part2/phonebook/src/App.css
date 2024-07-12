@@ -1,0 +1,18 @@
+.notification {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.notification--info {
+    background-color: aquamarine;
+    border-color: rgb(25, 167, 119);
+    color: rgb(3, 113, 76);
+}
+
+.notification--error {
+    background-color: rgb(255, 211, 211);
+    border-color: rgb(233, 47, 47);
+    color: rgb(182, 42, 42);
+}
