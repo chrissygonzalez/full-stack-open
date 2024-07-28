@@ -27,7 +27,11 @@ const App = () => {
     if (!existingPerson) {
       const nameObject = { name: newName, number: newNumber };
       personService.create(nameObject)
-        .then(res => setPersons([...persons, res]));
+        .then(res => setPersons([...persons, res]))
+        .catch(err => {
+          setMessage({ text: err.response.data.error, level: "error" });
+          setTimeout(() => setMessage(null), 3000);
+        });
       setNewName('');
       setNewNumber('');
       setMessage({ text: `Added ${newName}`, level: "info" });
@@ -63,7 +67,7 @@ const App = () => {
     if (window.confirm(`Delete ${name}?`)) {
       personService.deletePerson(id)
         .then(deleted => {
-          const updatedPersons = persons.filter(person => person.id !== deleted.id);
+          const updatedPersons = persons.filter(person => person.id != id);
           setPersons(updatedPersons);
         });
     }
